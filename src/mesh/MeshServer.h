@@ -1,4 +1,6 @@
 #pragma once
+#include "MeshIter.h"
+#include "MeshList.h"
 
 class MeshServer {
 public:
@@ -7,9 +9,11 @@ public:
 
     int dimension() { return dim_; }
     void setDimension(const int d) { dim_ = d; }
+    MeshIter meshs() const;
 
 private:
     int dim_;
+    MeshList ml_;
 };
 
 extern MeshServer ms;

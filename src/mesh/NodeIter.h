@@ -9,12 +9,12 @@ public:
     ~NodeIter();
 
     int operator++();
-    Node& current();
+    Node& current() { return *cur_; }
     int index();
 
 private:
     const NodeList* list_;
-    Node* cur;
-    int flag;
-    int deepcopy;
+    Node* cur_;
+    int flag_;
+    int deepcopy_;
 };

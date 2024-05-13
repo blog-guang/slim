@@ -17,10 +17,12 @@ public:
 
     void operator=(const Element& e);
 
-    virtual ElementType Type() const { return ElementType::Node; }
+    virtual ElementType Type() = 0;
+
+    virtual int nodeLength() = 0;
 
     Mesh& mesh() { return *mesh_; }
 
-private:
+protected:
     Mesh* mesh_;
 };

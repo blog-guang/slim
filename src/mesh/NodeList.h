@@ -19,6 +19,6 @@ public:
 
 private:
     std::vector<Node*> list_;
-    int max;
-    int cur_max;
+    int max_;
+    int cur_max_;
 };
