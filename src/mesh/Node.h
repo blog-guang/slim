@@ -3,6 +3,7 @@
 #include "Element.h"
 
 class Node : public Element {
+public:
     Node(Mesh& m, Coordinate& c) {
         mesh_ = &m;
         coor_ = &c;
@@ -18,14 +19,11 @@ class Node : public Element {
         id_ = n.globalID();
     }
 
-    Node() {
-        coor_ = nullptr;
-        id_ = -1;
-    }
+    Node() {}
 
-    virtual ~Node();
+    virtual ~Node() {}
 
-    virtual ElementType Type() { return ElementType::Node; }
+    virtual ElementType Type() const { return ElementType::Node; }
 
     // how many nods?
     virtual int nodeLength() const { return 1; }
@@ -38,7 +36,7 @@ class Node : public Element {
 
     Location position() { return Location(*coor_); }
 
-private:
+protected:
     Coordinate* coor_;
 
     int id_;

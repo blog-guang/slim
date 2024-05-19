@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(slim VERSION 0.1.0 LANGUAGES C CXX)
 
+include_directories(src)
 file(GLOB_RECURSE SOURCES "*.cc")
 
 include(CTest)

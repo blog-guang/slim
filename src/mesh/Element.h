@@ -1,5 +1,4 @@
 #pragma once
-// #include "Mesh.h"
 
 class Mesh;
 
@@ -9,7 +8,7 @@ public:
 
     Element();
 
-    Element(Mesh* m) : mesh_(m) {}
+    Element(Mesh& m);
 
     Element(const Element& e);
 
@@ -17,11 +16,15 @@ public:
 
     void operator=(const Element& e);
 
-    virtual ElementType Type() = 0;
+    virtual ElementType Type() const = 0;
 
     virtual int nodeLength() = 0;
 
-    Mesh& mesh() { return *mesh_; }
+    Mesh& mesh() const;
+
+    int dimension() const;
+
+    void setMesh(Mesh& m) { mesh_ = &m; }
 
 protected:
     Mesh* mesh_;

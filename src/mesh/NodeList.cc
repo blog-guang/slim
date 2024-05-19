@@ -2,23 +2,23 @@
 
 NodeList::NodeList() {}
 
-NodeList::~NodeList() {}
+NodeList::NodeList(const NodeList& n) {
+    this->deleteme();
+    for (auto it : n.list_) {
+        list_.push_back(it);
+    }
+}
+
+NodeList::~NodeList() { this->deleteme(); }
 
 NodeList& NodeList::operator=(const NodeList& nl) {
-    list_ = nl.nodes();
-    return *this;
-}
+    if (this == &nl) return *this;
 
-void NodeList::Add(Node* n) {
-    // auto it = std::find(list_.begin(), list_.end(), n);
-    // if (it == list_.end()) {
-    //     list_.push_back(n);
-    // }
-    list_.push_back(n);
-}
+    this->deleteme();
 
-void NodeList::Add(NodeList& nl) {
-    if (!nl.isEmpty()) {
-        list_.insert(list_.end(), nl.nodes().begin(), nl.nodes().end());
+    for (auto it : nl.list_) {
+        list_.push_back(it);
     }
+
+    return *this;
 }
